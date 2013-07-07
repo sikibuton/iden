@@ -12,7 +12,7 @@ import random
 import math
 
 def f(x):
-    y = -x*x
+    y = -(x-3)*(x-3)
     return y
 
 def max_value_i(l):
@@ -23,10 +23,11 @@ def max_value_i(l):
            n = i
     return n
 
-def main():
+def calc():
     N = 6
-    G = 3
+    G = 100
     n = []
+    c = [0,0,0]
     for i in range(N):
         n.append(random.uniform(-100,100))
     n_c = n
@@ -36,27 +37,22 @@ def main():
     j=0
     k=0
     while j<G:
-        print "j="
-        print j
         m = []
         i=0
         for i in range(N):
             m.append((f(n[i])))
-        print"m="
-        print m
         k=0
         for k in range (3):
             a = max_value_i(m)
             m[a] = min(m)
-            n[k] = n[a]
-            print "k="
-            print k
-            print m
+            c[k] = n[a]
+        for k in range(3):
+            n[k] = c[k]
         n[3] = random.uniform(-100,100)
-        n[4] = abs((n[0]-n[1])/2)
-        n[5] = abs((n[0]+n[1])/2)
-        print"new n="
-        print n
+        n[4] = (n[0]-n[1])/2
+        n[5] = (n[0]+n[1])/2
+        #print"new n="
+        #print n
         j = j+1
     m = []
     i=0
@@ -69,4 +65,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    calc()
